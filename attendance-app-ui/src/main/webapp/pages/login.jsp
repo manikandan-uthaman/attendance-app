@@ -19,8 +19,8 @@
 }
 </style>
 </head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<body style="padding: 30px">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="border-radius: 4px">
 		<div style="overflow: auto; width: 100%;">
 			<a class="navbar-brand" href="#">MyAttendance</a> 
 			<a href="/attendance-app-ui/registration" style="float: right;">
