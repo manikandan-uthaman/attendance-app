@@ -1,5 +1,6 @@
 package com.attendance.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,11 +9,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.attendance.app.AppBean;
 import com.attendance.model.User;
 
 @Controller
 public class BaseController {
 
+	@Autowired
+	AppBean appBean;
+	
 	// Spring Security see this :
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
@@ -69,7 +74,7 @@ public class BaseController {
 	@RequestMapping(value="/registration/validateEmail", method=RequestMethod.GET)
 	@ResponseBody
 	public String validateEmail(@RequestParam String email){
-		System.out.println(email);
+		System.out.println(appBean.getMessage());
 		return "valid";
 	}
 }

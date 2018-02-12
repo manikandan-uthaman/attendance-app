@@ -6,4 +6,7 @@
 	
 	<context:annotation-config />
 
+	<bean id="userpojo" class="com.attendance.model.User" />	
+
+	<import resource="classpath*:spring-bean.xml" />
 </beans>
