@@ -10,10 +10,11 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:component-scan base-package="com.attendance.controller" />
+	<context:component-scan base-package="com.attendance.app" />
 
-	<import resource="classpath*:spring-bean.xml" />
+	<!-- <import resource="classpath*:/business/spring-bean.xml" />
 	<import resource="spring-beans.xml" />
-	<import resource="spring-security.xml" />
+	<import resource="spring-security.xml" /> -->
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
