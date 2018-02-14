@@ -18,10 +18,10 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
-		<param-value>/WEB-INF/spring-beans.xml</param-value>
-		<param-value>/WEB-INF/spring-security.xml</param-value>
-		<param-value>classpath:/resources/spring-bean.xml</param-value>
+		<param-value>/WEB-INF/mvc-dispatcher-servlet.xml,/WEB-INF/spring-beans.xml,/WEB-INF/spring-security.xml,classpath:/resources/spring-bean.xml</param-value>
+
+		<!-- <param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value> <param-value>/WEB-INF/spring-beans.xml</param-value> 
+			<param-value>/WEB-INF/spring-security.xml</param-value> <param-value>classpath:/resources/spring-bean.xml</param-value> -->
 	</context-param>
 
 	<listener>

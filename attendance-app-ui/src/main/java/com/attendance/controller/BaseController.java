@@ -15,8 +15,8 @@ import com.attendance.model.User;
 @Controller
 public class BaseController {
 
-//	@Autowired
-	AppBean appBean = new AppBean();
+	@Autowired
+	AppBean appBean; // = new AppBean();
 	
 	// Spring Security see this :
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
