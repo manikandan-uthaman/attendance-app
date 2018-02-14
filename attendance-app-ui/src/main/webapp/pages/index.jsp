@@ -27,6 +27,8 @@
 			Welcome : ${pageContext.request.userPrincipal.name} | <a href="javascript:formSubmit()"> Logout</a>
 		</h2>
 	</c:if>
+	
+	<jsp:include page="/angular5/dist/index.html" />
 
 </body>
 </html>
