@@ -5,14 +5,6 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-	<beans:bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-
-		<beans:property name="location">
-			<beans:value>classpath:database.properties</beans:value>
-		</beans:property>
-	</beans:bean>
-
 	<http auto-config="true">
 		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/registration/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
@@ -28,10 +20,9 @@
 
 	<authentication-manager>
 		<authentication-provider>
-			<user-service>
-				<user name="${login.username}" password="${login.password}"
-					authorities="ROLE_USER" />
-			</user-service>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select username,password, enabled from users where username=?"
+				authorities-by-username-query="select username, role from user_roles where username =?  " />
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>

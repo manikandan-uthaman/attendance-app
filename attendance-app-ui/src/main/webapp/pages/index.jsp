@@ -2,33 +2,35 @@
 <%@page session="true"%>
 <html>
 <head>
-	<script src="<c:url value="/resources/scripts/jquery-3.3.1.min.js" />"></script>
+<script src="<c:url value="/resources/scripts/jquery-3.3.1.min.js" />"></script>
 </head>
 <body>
 	<h1>Title : ${title}</h1>
 	<h1>Message : ${message}</h1>
 
-	<c:url value="/j_spring_security_logout" var="logoutUrl" />
+	<sec:authorize access="hasRole('ROLE_USER')">
+		<c:url value="/j_spring_security_logout" var="logoutUrl" />
 
-	<!-- csrt for log out-->
-	<form action="${logoutUrl}" method="post" id="logoutForm">
-<%-- 		<input type="hidden" name="${_csrf.parameterName}"
+		<!-- csrt for log out-->
+		<form action="${logoutUrl}" method="post" id="logoutForm">
+			<%-- 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" /> --%>
-	</form>
+		</form>
 
-	<script>
-		function formSubmit() {
-			document.getElementById("logoutForm").submit();
-		}
-	</script>
+		<script>
+			function formSubmit() {
+				document.getElementById("logoutForm").submit();
+			}
+		</script>
 
-	<c:if test="${pageContext.request.userPrincipal.name != null}">
-		<h2>
-			Welcome : ${pageContext.request.userPrincipal.name} | <a href="javascript:formSubmit()"> Logout</a>
-		</h2>
-	</c:if>
-	
-	<jsp:include page="/angular5/dist/index.html" />
+		<c:if test="${pageContext.request.userPrincipal.name != null}">
+			<h2>
+				Welcome : ${pageContext.request.userPrincipal.name} | <a
+					href="javascript:formSubmit()"> Logout</a>
+			</h2>
+		</c:if>
+	</sec:authorize>
+	<%-- <jsp:include page="/angular5/dist/index.html" /> --%>
 
 </body>
 </html>
