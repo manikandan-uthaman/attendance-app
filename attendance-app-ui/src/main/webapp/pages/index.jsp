@@ -30,7 +30,8 @@
 			</h2>
 		</c:if>
 	</sec:authorize>
-	<%-- <jsp:include page="/angular5/dist/index.html" /> --%>
+	<%@ include  file="/angular5/dist/index.html"  %>
+<%-- 	<jsp:include page="/angular5/dist/index.html" /> --%>
 
 </body>
 </html>

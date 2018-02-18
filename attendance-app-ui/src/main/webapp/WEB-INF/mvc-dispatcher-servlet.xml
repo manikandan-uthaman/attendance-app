@@ -12,9 +12,8 @@
 	<context:component-scan base-package="com.attendance.controller" />
 	<context:component-scan base-package="com.attendance.app" />
 
-	<!-- <import resource="classpath*:/business/spring-bean.xml" />
-	<import resource="spring-beans.xml" />
-	<import resource="spring-security.xml" /> -->
+	<!-- <import resource="classpath*:/business/spring-bean.xml" /> <import 
+		resource="spring-beans.xml" /> <import resource="spring-security.xml" /> -->
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -27,6 +26,8 @@
 	</bean>
 
 	<mvc:resources mapping="/resources/**" location="/resources/"
+		cache-period="31556926" />
+	<mvc:resources mapping="/angular5/**" location="/angular5/"
 		cache-period="31556926" />
 
 	<mvc:annotation-driven />
