@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.attendance.app.AppBean;
-import com.attendance.model.User;
+import com.attendance.Forms.RegistrationForm;
 
 @Controller
 public class BaseController {
@@ -25,7 +25,7 @@ public class BaseController {
 
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
-			model.addObject("error", "Invalid username and password!");
+			model.addObject("error", "Invalid username or password!");
 		}
 
 		if (logout != null) {
@@ -61,7 +61,7 @@ public class BaseController {
 	}
 	
 	@RequestMapping(value="/users", method=RequestMethod.POST)
-	public ModelAndView addUser(@ModelAttribute User user){
+	public ModelAndView addUser(@ModelAttribute RegistrationForm user){
 		ModelAndView mav = new ModelAndView("registration");
 		mav.addObject("message", "User added successfully");
 

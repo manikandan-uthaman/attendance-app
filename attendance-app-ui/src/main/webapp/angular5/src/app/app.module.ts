@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { BsDatepickerModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar-component/navbar.component';
@@ -35,7 +36,8 @@ import { NotFoundComponent } from './notfound-component/notfound.component';
         path:'**', 
         component: NotFoundComponent
       }
-    ])
+    ]),
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

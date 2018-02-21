@@ -1,7 +1,16 @@
-.form-container{
+.form-container {
     margin-top: 10px;
 }
 
-.error{
+span.error {
     color: red
+}
+
+input.error {
+    border: none;
+    box-shadow: 0 0 4px 0.1rem rgba(255, 0, 0, 1);
+}
+
+input.datebox {
+    width: 110px;
 }
