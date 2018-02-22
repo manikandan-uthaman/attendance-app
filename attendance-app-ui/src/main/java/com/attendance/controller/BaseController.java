@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.attendance.app.AppBean;
 import com.attendance.Forms.RegistrationForm;
+import com.attendance.ServiceImpl.UtilityServiceImpl;
 
 @Controller
 public class BaseController {
 
 	@Autowired
-	AppBean appBean; // = new AppBean();
+	UtilityServiceImpl utilityService;
 	
 	// Spring Security see this :
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -74,7 +74,7 @@ public class BaseController {
 	@RequestMapping(value="/registration/validateEmail", method=RequestMethod.GET)
 	@ResponseBody
 	public String validateEmail(@RequestParam String email){
-		System.out.println(appBean.getMessage());
+		System.out.println(utilityService.validateEmail(null));
 		return "valid";
 	}
 }
