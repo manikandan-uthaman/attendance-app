@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar-component/navbar.component';
 import { HomeComponent } from './home-component/home.component';
 import { ReqDetailsComponent } from './reqdetails-component/reqdetails.component';
 import { NotFoundComponent } from './notfound-component/notfound.component';
+import { DateMaskDirective } from './shared/directives/date-mask.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NotFoundComponent } from './notfound-component/notfound.component';
     HomeComponent,
     NavbarComponent,
     NotFoundComponent,
-    ReqDetailsComponent
+    ReqDetailsComponent,
+    DateMaskDirective
   ],
   imports: [
     BrowserModule,
@@ -24,6 +26,9 @@ import { NotFoundComponent } from './notfound-component/notfound.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       {
+        path:'reqdetails/:reqid', 
+        component: ReqDetailsComponent
+      },{
         path:'reqdetails', 
         component: ReqDetailsComponent
       },{

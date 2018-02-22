@@ -1,39 +1,93 @@
 <div class="form-container col-md-5">
-    <form [formGroup]="requestForm">
+    <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="appliedBy">Applied By</label>
-            <input formControlName="appliedBy" type="text" id="appliedBy" class="form-control" (blur)="onblur()" />
+            <input 
+                formControlName="appliedBy" 
+                type="text" 
+                id="appliedBy" 
+                class="form-control" />
         </div>
 
         <div class="form-group">
             <label>Leave Category</label>
             <div class="form-check">
-                <input formControlName="leaveCategory" class="form-check-input" type="radio" name="leaveCategory" id="leavecategory" value="1">
+                <input 
+                    formControlName="leaveCategory" 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="leaveCategory" 
+                    id="leavecategory" 
+                    value="1">
                 <label class="form-check-label">
               Casual Leave
             </label>
             </div>
             <div class="form-check">
-                <input formControlName="leaveCategory" class="form-check-input" type="radio" name="leaveCategory" id="leavecategory" value="2">
+                <input 
+                    formControlName="leaveCategory" 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="leaveCategory" 
+                    id="leavecategory" 
+                    value="2" />
                 <label class="form-check-label">
               Annual Leave
             </label>
             </div>
+            <div *ngIf="leavecategory.touched && leavecategory.invalid">
+                <span class="error">Leave Category is required</span>
+            </div>
         </div>
 
         <div class="form-group">
-            <label for="fromDate">From Date</label>
-            <input formControlName="fromDate" type="text" id="fromDate" class="form-control datebox" maxlength="10" bsDatepicker placement="right" [bsConfig]="bsConfig" />
+            <label for="fromDate">From Date (mm/dd/yyyy)</label>
+            <input 
+                formControlName="fromDate" 
+                type="text" 
+                id="fromDate" 
+                class="form-control datebox" 
+                [ngClass]="{'error': (fromdate.touched && fromdate.invalid)}"
+                maxlength="10" 
+                bsDatepicker 
+                placement="right" 
+                [bsConfig]="bsConfig" 
+                [minDate]="minDate" 
+                date-mask />
+            <div *ngIf="fromdate.touched && fromdate.invalid">
+                <span class="error">From Date is required</span>
+            </div>
         </div>
 
         <div class="form-group">
-            <label for="toDate">To Date</label>
-            <input formControlName="toDate" type="text" id="toDate" class="form-control datebox" maxlength="10" bsDatepicker placement="right" [bsConfig]="bsConfig" />
+            <label for="toDate">To Date (mm/dd/yyyy)</label>
+            <input 
+                formControlName="toDate" 
+                type="text" 
+                id="toDate" 
+                class="form-control datebox" 
+                [ngClass]="{'error': (todate.touched && todate.invalid)}"
+                maxlength="10" 
+                bsDatepicker 
+                placement="right" 
+                [bsConfig]="bsConfig" 
+                [minDate]="minDate" 
+                date-mask />
+            <div *ngIf="todate.touched && todate.invalid">
+                <span *ngIf="todate.errors.required" class="error">To Date is required</span>
+                <span *ngIf="todate.errors.invalidRange" class="error">To Date cannot be less than From Date</span>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="remarks">Remarks</label>
-            <textarea formControlName="remarks" name="remarks" id="remarks" cols="30" rows="3" class="form-control"></textarea>
+            <textarea 
+                formControlName="remarks" 
+                name="remarks" 
+                id="remarks" 
+                cols="30" 
+                rows="3" 
+                class="form-control"></textarea>
         </div>
         <button class="btn btn-primary" type="submit">Sign Up</button>
     </form>
