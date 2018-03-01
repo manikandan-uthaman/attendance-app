@@ -26,7 +26,7 @@
 		<jstl.version>1.2</jstl.version>
 		<junit.version>4.11</junit.version>
 		<jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>
-		<mysql.connector.version>5.1.30</mysql.connector.version>
+		<mysql.connector.version>5.1.6</mysql.connector.version>
 	</properties>
 
 	<dependencies>
@@ -98,7 +98,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
+			<version>${mysql.connector.version}</version>
 		</dependency>
 
 		<!-- jstl -->
