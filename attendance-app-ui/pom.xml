@@ -115,6 +115,18 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.6.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.3</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.attendance.app</groupId>
 			<artifactId>attendance-app-contract</artifactId>
 			<version>1.0-SNAPSHOT</version>
@@ -135,41 +147,15 @@
 	<build>
 		<finalName>attendanceApp</finalName>
 		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>exec-npm-install</id>
-						<phase>generate-sources</phase>
-						<configuration>
-							<workingDirectory>src/main/webapp/angular5</workingDirectory>
-							<executable>npm</executable>
-							<arguments>
-								<argument>install</argument>
-							</arguments>
-						</configuration>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>exec-npm-ng-build</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<workingDirectory>src/main/webapp/angular5</workingDirectory>
-							<executable>ng</executable>
-							<arguments>
-								<argument>build</argument>
-								<argument>-d=/attendance-app-ui/angular5/dist</argument>
-							</arguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<executions> <execution> <id>exec-npm-install</id> <phase>generate-sources</phase> 
+				<configuration> <workingDirectory>src/main/webapp/angular5</workingDirectory> 
+				<executable>npm</executable> <arguments> <argument>install</argument> </arguments> 
+				</configuration> <goals> <goal>exec</goal> </goals> </execution> <execution> 
+				<id>exec-npm-ng-build</id> <phase>generate-sources</phase> <goals> <goal>exec</goal> 
+				</goals> <configuration> <workingDirectory>src/main/webapp/angular5</workingDirectory> 
+				<executable>ng</executable> <arguments> <argument>build</argument> <argument>-d=/attendanceApp/angular5/dist</argument> 
+				</arguments> </configuration> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>

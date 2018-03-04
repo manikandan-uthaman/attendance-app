@@ -96,6 +96,18 @@
 			<version>2.7.7</version>
 		</dependency>
 
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+			<version>5.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.attendance.app</groupId>
+			<artifactId>attendance-app-contract</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

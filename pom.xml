@@ -17,8 +17,8 @@
   </dependencies>
   <modules>
     <module>attendance-app-contract</module>
-    <module>attendance-app-business</module>
     <module>attendance-app-persistance</module>
+    <module>attendance-app-business</module>
     <module>attendance-app-ui</module>
   </modules>
 </project>

@@ -8,19 +8,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.attendance.Forms.RegistrationForm;
+import com.attendance.Forms.userDetails;
 import com.attendance.Service.UtilityService;
+import com.attendance.model.UserDetails;
 
 @Controller
 public class BaseController {
 
 	@Autowired
 	UtilityService utilityServiceImpl;
-	
+
 	// Spring Security see this :
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "newuser", required = false) String newuser,
 			@RequestParam(value = "logout", required = false) String logout) {
 
 		ModelAndView model = new ModelAndView();
@@ -28,9 +32,14 @@ public class BaseController {
 			model.addObject("error", "Invalid username or password!");
 		}
 
+		if (newuser != null) {
+			model.addObject("msg", "User registered successfully.");
+		}
+
 		if (logout != null) {
 			model.addObject("msg", "You've been logged out successfully.");
 		}
+
 		model.setViewName("login");
 
 		return model;
@@ -53,29 +62,34 @@ public class BaseController {
 	public ModelAndView registrationPage() {
 
 		ModelAndView model = new ModelAndView();
-//		model.addObject("userForm", new User());
+		// model.addObject("userForm", new User());
 		model.setViewName("registration");
 
 		return model;
 
 	}
-	
-	@RequestMapping(value="/users", method=RequestMethod.POST)
-	public ModelAndView addUser(@ModelAttribute RegistrationForm user){
-		ModelAndView mav = new ModelAndView("registration");
-		mav.addObject("message", "User added successfully");
 
-		System.out.println(user.getName());
-		System.out.println(user.getEmail());
-		
-		return mav;
+	@RequestMapping(value = "/registration/users", method = RequestMethod.POST)
+	public RedirectView addUser(@ModelAttribute RegistrationForm user) {
+
+		utilityServiceImpl.addNewUser(user);
+		return new RedirectView("/attendanceApp/login?newuser=newuser");
 	}
 
-	@RequestMapping(value="/registration/validateEmail", method=RequestMethod.GET)
+	@RequestMapping(value = "/registration/validateEmail", method = RequestMethod.GET)
 	@ResponseBody
-	public String validateEmail(@RequestParam String email){
-		System.out.println("Controller:"+email);
-		System.out.println(utilityServiceImpl.validateEmail(email));
-		return "valid";
+	public String validateEmail(@RequestParam String email) {
+		boolean isvalid = utilityServiceImpl.validateEmail(email);
+		return String.valueOf(isvalid);
+	}
+	
+	@RequestMapping(value="/getUserDetails", method=RequestMethod.GET)
+	@ResponseBody
+	public userDetails getUserDetails(){
+		userDetails user = new userDetails();
+		user.setName("Manikandan");
+		user.setEmail("manikandan.mit@outlook.com");
+		user.setHasAdminAccess(true);
+		return user;
 	}
 }

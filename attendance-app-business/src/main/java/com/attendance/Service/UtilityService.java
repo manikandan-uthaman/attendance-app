@@ -3,6 +3,8 @@
  */
 package com.attendance.Service;
 
+import com.attendance.Forms.RegistrationForm;
+
 /**
  * @author Manikandan
  *
@@ -10,4 +12,6 @@ package com.attendance.Service;
 public interface UtilityService {
 
 	public boolean validateEmail(String email);
+	
+	public void addNewUser(RegistrationForm user);
 }

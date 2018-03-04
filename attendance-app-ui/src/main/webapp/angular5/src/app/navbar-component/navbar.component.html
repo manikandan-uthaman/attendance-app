@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" routerLink="/">MyApp</a>
+  <a class="navbar-brand" routerLink="/attendanceApp/home">MyApp</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,15 +7,24 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/home">Home</a>
+        <a class="nav-link" routerLink="/attendanceApp/home">Home</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/reqdetails">Create Request</a>
+        <a class="nav-link" routerLink="/attendanceApp/reqdetails">Create Request</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="userDetails?.hasAdminAccess">
+          <a class="nav-link" routerLink="/attendanceApp/home">Reports</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">User</button>
-    </form>
+    
+    <!-- <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <span class="nav-link">Welcome {{ userDetails?.name}} |</span>
+      </li>
+      <li class="nav-item"> -->
+        <a class="logout-link" href="javascript:formSubmit()">Logout</a>
+      <!-- </li>
+    </ul> -->
+
   </div>
 </nav>

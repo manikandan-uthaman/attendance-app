@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 
@@ -10,6 +11,7 @@ import { HomeComponent } from './home-component/home.component';
 import { ReqDetailsComponent } from './reqdetails-component/reqdetails.component';
 import { NotFoundComponent } from './notfound-component/notfound.component';
 import { DateMaskDirective } from './shared/directives/date-mask.directive';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -23,19 +25,20 @@ import { DateMaskDirective } from './shared/directives/date-mask.directive';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       {
-        path:'reqdetails/:reqid', 
+        path:'attendanceApp/reqdetails/:reqid', 
         component: ReqDetailsComponent
       },{
-        path:'reqdetails', 
+        path:'attendanceApp/reqdetails', 
         component: ReqDetailsComponent
       },{
-        path:'home', 
+        path:'attendanceApp/home', 
         component: HomeComponent
       },{
-        path:'', 
+        path:'attendanceApp', 
         component: HomeComponent
       },{
         path:'**', 
@@ -44,7 +47,7 @@ import { DateMaskDirective } from './shared/directives/date-mask.directive';
     ]),
     BsDatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

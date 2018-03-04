@@ -1,3 +1,4 @@
+var isEmailValid = false;
 $(document).ready(function(){
 	
 	$(".name").on('blur', function(){
@@ -22,7 +23,7 @@ $(document).ready(function(){
 	
 	$(".register").on('click', function(e){
 		var isValid = nameValidation();
-		isValid = emailValidation() && isValid;
+		isValid = isEmailValid && isValid;
 		isValid = phoneValidation() && isValid;
 		isValid = pwdValidation() && isValid;
 		isValid = confirmPwdValidation() && isValid;
@@ -49,21 +50,38 @@ var nameValidation = function(){
 var emailValidation = function(){
 	let email = $(".email").val();
 	if((email == undefined) || (email == "")){
+		isEmailValid = false;
 		$(".email").addClass("is-invalid");
 		$(".email-error").show();
 		return false;
 	}else{
 		var pattern = new RegExp(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/);
 		if(!pattern.test(email)){
+			isEmailValid = false;
 			$(".email").addClass("is-invalid");
 			$(".email-format-error").show();
 			return false;
-		}else{			
-			
+		}else{						
 			$.ajax({
-				url: "/attendance-app-ui/registration/validateEmail?email="+email,
+				url: "/attendanceApp/registration/validateEmail?email="+email,
 				success: function(data){
-					console.log(data)
+					if(data == "false"){
+						isEmailValid = false;
+						$(".email").addClass("is-invalid");
+						$(".email-exists-error").show();
+						return false;
+					}else if(data == "true"){
+						isEmailValid = true;
+						$(".email").removeClass("is-invalid");
+						$(".email-exists-error").hide();
+						return true;
+					}
+				},
+				error: function(data){
+					isEmailValid = false;
+					$(".email").addClass("is-invalid");
+					$(".email-exists-error").show();
+					return false;					
 				}
 			});
 			

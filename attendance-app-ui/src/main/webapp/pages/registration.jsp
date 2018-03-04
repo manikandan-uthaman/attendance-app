@@ -27,7 +27,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="border-radius: 4px">
 		<div style="overflow: auto; width: 100%;">
 			<a class="navbar-brand" href="#">MyAttendance</a> <a
-				href="/attendance-app-ui/login" style="float: right;">
+				href="/attendanceApp/login" style="float: right;">
 				<button class="btn pull-right" style="float: right;">Login</button>
 			</a>
 		</div>
@@ -35,7 +35,7 @@
 	<h2 style="margin: 10px 0px 0px 15px;">Registration..</h2>
 	<div class="row">
     <div class="col-md-5 well registration-card">
-        <form method="POST" action="/attendance-app-ui/users" style="padding-bottom: 20px;">
+        <form method="POST" action="/attendanceApp/registration/users" style="padding-bottom: 20px;">
             <fieldset>
                 <legend>Personal Details</legend>
                 <div class="form-group">
@@ -48,6 +48,7 @@
                     <input class="form-control email" name="email" id="email" type="text">
                     <div class="invalid-feedback email-error" style="display: none">Email is required</div>
                     <div class="invalid-feedback email-format-error" style="display: none">Please enter a valid email.</div>
+					<div class="invalid-feedback email-exists-error" style="display: none">An User with this email already exists. Please try using different one.</div>
                 </div>
                 <div class="form-group">
                     <label class="controlLabel" for="phone">Phone</label>

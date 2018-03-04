@@ -23,7 +23,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="border-radius: 4px">
 		<div style="overflow: auto; width: 100%;">
 			<a class="navbar-brand" href="#">MyAttendance</a> 
-			<a href="/attendance-app-ui/registration" style="float: right;">
+			<a href="/attendanceApp/registration" style="float: right;">
 				<button class="btn pull-right" style="float: right;">Register</button>
 			</a>
 		</div>
